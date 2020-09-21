@@ -626,7 +626,10 @@ if (APPLE)
   string(APPEND CMAKE_C_FLAGS " -Wno-deprecated")
 endif()
 # ONNX
+set(_BUILD_SHARED_LIBS ${BUILD_SHARED_LIBS})
+set(BUILD_SHARED_LIBS ${onnxruntime_BUILD_SHARED_LIB})
 add_subdirectory(onnx)
+set(BUILD_SHARED_LIBS ${_BUILD_SHARED_LIBS})
 
 #set_target_properties(gen_onnx_proto PROPERTIES FOLDER "External/ONNX")
 # fix a warning in onnx code we can't do anything about
